@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Stock Market WebApplication</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
@@ -12,6 +12,9 @@
     <%= render "home/navbar" %>
     <br/>
     <div class="container">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      <br/>  
       <%= yield %>
     </div>
     <%= render "home/footer" %>

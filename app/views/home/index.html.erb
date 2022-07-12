@@ -1,2 +1,22 @@
 <h1>Stocking</h1>
 <p>Track All Your Stock Options on this WebApplication</p>
+<%# <%= turbo_frame_tag "post" do %> 
+    <%= form_tag root_path, :method => 'POST' do %>
+        <%= text_field_tag 'ticker', nil, placeholder: "Enter Ticker Symbol", size: 50 %>
+        <%= submit_tag 'Lookup' %>
+    <% end %>   
+
+<% if @stock %> 
+    Name: <%= @stock.company_name %><br/>
+    Latest price $<%= @stock.latest_price%><br/>
+    52 Weeks High $<%= @stock.week52_high%><br/>
+    53 Week Low $<%= @stock.week52_low%><br/>
+<% elsif @nothing %>
+    <%= @nothing%>
+<% end %>    
+
+<% if @error %>
+    <%= @error %>
+<% end %>
+
+

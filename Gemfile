@@ -33,6 +33,13 @@ gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 #jquery
 gem 'jquery-rails'
 
+#stockQuote Gem
+gem 'stock_quote', '~> 3.0'
+
+#devise gem
+gem 'devise', '~> 4.8', '>= 4.8.1'
+
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
