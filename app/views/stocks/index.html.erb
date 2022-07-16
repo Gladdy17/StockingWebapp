@@ -2,11 +2,30 @@
 <div id="stocks">
   <% @stocks.each do |stock| %>
     <% if stock.user_id == current_user.id %>
+      <%if stock.ticker == ""%>
+        <%=@ticker.company_name = "N/A"%>
+        <%=@ticker.symbol = "N/A"%>
+        <%=@ticker.latest_price = "N/A"%>
+      <%elsif stock.ticker %>
+        <%begin %>
+          <%@ticker = StockQuote::Stock.quote(stock.ticker) %>
+          <%rescue RuntimeError %>
+          <%=@ticker.company_name = "N/A"%>
+          <%=@ticker.symbol = "N/A"%>
+          <%=@ticker.latest_price = "N/A"%>
+        <%end%>
+      <%end%>
       <%= render stock %>
+      <tr>
+        <td></td>
+        <td><%= @ticker.company_name  %></td>
+        <td><%= @ticker.symbol  %></td>
+        <td><%= @ticker.latest_price%></td>
+      </tr>
       <p>
         <%= link_to "Show this stock", stock %>
       </p>
     <%end%>
-  <%end%>  
+  <%end%>
 </div>
 <%= link_to "New stock", new_stock_path %>
